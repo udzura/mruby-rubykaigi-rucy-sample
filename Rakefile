@@ -12,8 +12,17 @@ file :mruby do
   end
 end
 
+file "bpf/rucy.o" => "bpf/rucy.rb" do
+  rucy = ENV['RUCY'] || 'rucy'
+  sh "#{rucy} object bpf/rucy.rb -d bpf/rucy.o"
+end
+
+file "src/rucy_bpf.h" => "bpf/rucy.o" do
+  sh "bpftool gen skeleton bpf/rucy.o > src/rucy_bpf.h"
+end
+
 desc "compile binary"
-task :compile => :mruby do
+task :compile => [:mruby, "src/rucy_bpf.h"] do
   sh "cd mruby && rake all MRUBY_CONFIG=#{MRUBY_CONFIG}"
 end
 

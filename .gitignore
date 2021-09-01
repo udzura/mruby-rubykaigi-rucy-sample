@@ -1,1 +1,4 @@
 mruby/
+
+*.o
+src/rucy_bpf.h
