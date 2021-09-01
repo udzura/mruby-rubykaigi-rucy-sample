@@ -1,0 +1,7 @@
+name: mruby-rubykaigi-rucy-sample
+description: RubykaigiRucySample class
+author: Uchio Kondo
+website: https://github.com/udzura/mruby-rubykaigi-rucy-sample
+protocol: git
+repository: https://github.com/udzura/mruby-rubykaigi-rucy-sample.git
+license: MIT
